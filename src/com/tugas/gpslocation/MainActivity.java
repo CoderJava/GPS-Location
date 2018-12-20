@@ -76,10 +76,8 @@ public class MainActivity extends Activity implements OnClickListener {
 							try {
 								List<Address> addresses = geocoder.getFromLocation(lastLocation.getLatitude(), lastLocation.getLongitude(), 1);
 								if (addresses.size() > 0) {									
-									String address = addresses.get(0).getAddressLine(0);
-									String city = addresses.get(0).getAddressLine(1);
-									String country = addresses.get(0).getAddressLine(2);
-									textViewAddress.setText("Address: " + address + ", " + city + ", " + country);
+									String address = addresses.get(0).getAddressLine(0);									
+									textViewAddress.setText("Address: " + address);
 									showToastMessage("Location available");
 								} else {
 									showToastMessage("Failed to get address value");
