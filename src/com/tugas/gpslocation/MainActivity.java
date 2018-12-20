@@ -60,7 +60,7 @@ public class MainActivity extends Activity implements OnClickListener {
 					long millis = data.getLongExtra("countdown", -1L);
 					int second = (int) (millis / 1000);
 					textViewTimer.setText("Timer: " + second);
-					if (second == 1) {
+					if (second == 0) {
 						Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 						if (lastLocation == null) {
 							showToastMessage("Location not found");

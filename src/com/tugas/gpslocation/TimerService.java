@@ -3,6 +3,7 @@ package com.tugas.gpslocation;
 import android.app.Service;
 import android.content.Intent;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.os.IBinder;
 
 public class TimerService extends Service {
@@ -21,7 +22,15 @@ public class TimerService extends Service {
 		countDownTimer = new CountDownTimer(30000, 1000) {
 			@Override
 			public void onFinish() {
-				countDownTimer.start();				
+				Intent intentBroadcastTimer = new Intent();
+				intentBroadcastTimer.setAction("broadcast_timer");
+				intentBroadcastTimer.putExtra("countdown", 0L);
+				sendBroadcast(intentBroadcastTimer);
+				new Handler().postDelayed(new Runnable() {
+					public void run() {
+						countDownTimer.start();
+					}					
+				}, 1000);								
 			}
 
 			@Override
